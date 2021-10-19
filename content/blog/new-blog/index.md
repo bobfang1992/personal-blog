@@ -1,6 +1,6 @@
 ---
 title: New Blog 新博客
-date: "2021-10-19"
+date: 2021-10-19T16:28:43Z
 description: Some simple test for the new blog system
 ---
 
