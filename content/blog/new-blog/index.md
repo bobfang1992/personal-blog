@@ -6,8 +6,7 @@ description: Some simple test for the new blog system
 
 This is a my new blog. It is mainly about CS, but sometimes I will cover other things I found interesting, like history/politics/science etc.
 
-这是我的新博客。 我大部分时候会更新和计算机科学相关的内容，但是有的时候也会覆盖一些跟历史，政治或者其他科技类我觉得感兴趣的话题。]
-
+这是我的新博客。 我大部分时候会更新和计算机科学相关的内容，但是有的时候也会覆盖一些跟历史，政治或者其他科技类我觉得感兴趣的话题。
 Now some tests I want to run.
 
 # Embed a youtube video
