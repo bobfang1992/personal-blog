@@ -1,3 +1,6 @@
+# Because we are using gatsby cloud we can ignore this file
+package-lock.json
+
 # Logs
 logs
 *.log
