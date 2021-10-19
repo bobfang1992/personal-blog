@@ -95,7 +95,7 @@ public:
 
 对我们普通程序员了解这些有什么用呢：
 
-- junior： cache matters! use continous data structure if possible
+- junior: cache matters! use continous data structure if possible
 - senior: open source matters! without open source what can we do?
 - all: API design matters, the reason to have an API is to hide implemntation details!
 
