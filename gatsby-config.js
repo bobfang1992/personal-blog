@@ -3,7 +3,7 @@ module.exports = {
     title: `CS Grinding`,
     author: {
       name: `Bob Fang`,
-      summary: `Developer Living in London`,
+      summary: `a software developer Living in London`,
     },
     description: `A simple blog about software development and other things...`,
     siteUrl: `https://www.csgrinding.xyz`,
