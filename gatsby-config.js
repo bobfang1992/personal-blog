@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `The Strand`,
+    title: `CS Grinding`,
     author: {
       name: `Bob Fang`,
       summary: `Developer Living in London`,
     },
     description: `A simple blog about software development and other things...`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    siteUrl: `https://www.csgrinding.xyz`,
     social: {
       twitter: `bobfang1992`,
     },
@@ -112,8 +112,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `The Strand`,
-        short_name: `TheStrand`,
+        name: `CS Grinding`,
+        short_name: `CSGrinding`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website
