@@ -10,9 +10,9 @@ description: std::unordered_map有点慢？
 
 大家好，欢迎来到 Let’s C++的第三期，在这一起里我想和大家探讨一下关于 STL 里面的一个著名的容器类，std::unordered_map 的性能问题。
 
-## std::unodred_map 也会有性能问题？
+## std::unordered_map 也会有性能问题？
 
-很多小伙伴都知道，我们一般不推荐大家使用 std::map，这是因为 std::map 会自动把你插入的元素按照他们的键值排序，为了实现这样的 interface(interface 有好的中文翻译么?)，一般的 C++实现会用红黑树或者 avl 树这样的自平衡二叉树。这样的话每次插入新的元素，查找元素和删除元素的操作都是 O(logn),所以从原理上讲 std::map 就是比较慢的。所以当我们需要一个类似 python 里的 dictionary 的数据结构时，我们一般会使用 std::unordered_map，std::unordered_mpa 和 python 里的 dictionary 一样，都可以理解为一个哈希表的具体实现。它的插入，查找，删除都是 O(1)的，比 std::map 好了不少。
+很多小伙伴都知道，我们一般不推荐大家使用 std::map，这是因为 std::map 会自动把你插入的元素按照他们的键值排序，为了实现这样的 interface(interface 有好的中文翻译么?)，一般的 C++实现会用红黑树或者 AVL 树这样的自平衡二叉树。这样的话每次插入新的元素，查找元素和删除元素的操作都是 O(logn),所以从原理上讲 std::map 就是比较慢的。所以当我们需要一个类似 python 里的 dictionary 的数据结构时，我们一般会使用 std::unordered_map，std::unordered_map 和 python 里的 dictionary 一样，都可以理解为一个哈希表的具体实现。它的插入，查找，删除都是 O(1)的，比 std::map 好了不少。
 
 那么，std::unordered_map 已经用上了理论上讲操作最优的实现，为什么我们还在谈它的性能问题呢？
 
@@ -85,7 +85,7 @@ public:
 那么 std::unordered_map 是不是可以改成这种实现呢？答案是暂时不行：如果我们看 STL 的文档，那么我们会发现 unordered_map 把它内部试用 buckets+linked list 的细节也暴露在了它的 API 当中。
 
 > > Hyrum's Law:
-> > With a sufficent number of users of an API, it does not matter what you promise in the contract, all observable behaviors of you syhstem will be depended on by somebody
+> > With a sufficient number of users of an API, it does not matter what you promise in the contract, all observable behaviors of you system will be depended on by somebody
 
 # 问题
 
@@ -95,15 +95,15 @@ public:
 
 对我们普通程序员了解这些有什么用呢：
 
-- junior: cache matters! use continous data structure if possible
+- junior: cache matters! use continuous data structure if possible
 - senior: open source matters! without open source what can we do?
-- all: API design matters, the reason to have an API is to hide implemntation details!
+- all: API design matters, the reason to have an API is to hide implementation details!
 
 # Fun fact
 
-At every moment:
+At every moment in Google:
 
-- 1% cpu is consumed by a C++ hash table
+- 1% CPU is consumed by a C++ hash table
 - 4% RAM is consumed by a C++ hash table
 
 ![google_data_center](./dc.jpeg)
