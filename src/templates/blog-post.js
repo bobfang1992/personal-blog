@@ -32,12 +32,14 @@ const BlogPostTemplate = ({ data, location }) => {
           itemProp="articleBody"
         />
 
+        <Bio />
+        <hr />
         <ReactUtterences repo={"bobfang1992/personal-blog"} type={'pathname'} />
 
-        <hr />
+
 
         <footer>
-          <Bio />
+
         </footer>
       </article>
       <nav className="blog-post-nav">
