@@ -1,5 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import ReactUtterences from 'react-utterances'
+
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -29,7 +31,11 @@ const BlogPostTemplate = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+
+        <ReactUtterences repo={"bobfang1992/personal-blog"} type={'pathname'} />
+
         <hr />
+
         <footer>
           <Bio />
         </footer>
