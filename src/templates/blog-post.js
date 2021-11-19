@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import ReactUtterences from 'react-utterances'
-
+import ReactUtterences from "react-utterances"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -34,13 +33,9 @@ const BlogPostTemplate = ({ data, location }) => {
 
         <Bio />
         <hr />
-        <ReactUtterences repo={"bobfang1992/personal-blog"} type={'pathname'} />
+        <ReactUtterences repo={"bobfang1992/personal-blog"} type={"pathname"} />
 
-
-
-        <footer>
-
-        </footer>
+        <footer></footer>
       </article>
       <nav className="blog-post-nav">
         <ul

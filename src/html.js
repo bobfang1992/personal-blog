@@ -12,8 +12,10 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
 
-
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-604T10SV5P"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-604T10SV5P"
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -21,8 +23,8 @@ export default function HTML(props) {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-604T10SV5P');` }}
-
+          gtag('config', 'G-604T10SV5P');`,
+          }}
         />
         {props.headComponents}
       </head>
