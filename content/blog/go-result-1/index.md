@@ -63,7 +63,7 @@ result := make(chan Result, len(works))
 
 I usually opt for the second solution, but having to define this type every time is a pain. There were some suggestions to use `interface{}` to represent the Data and do type assertion when using the data, but generally I am not a big fan of using `interface{}` in Go.
 
-Luckily we got generics in Go, so we out `Result` type can defined using this feature.
+Luckily we got generics in Go 1.18, so our `Result` type can be defined using this feature.
 
 ```go
 type Result[T any] struct {
