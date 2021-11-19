@@ -36,6 +36,7 @@ func processing() {
     }
 
     wg.Wait()
+    close(result)
 
     for r := range result {
         // combine results in some way
