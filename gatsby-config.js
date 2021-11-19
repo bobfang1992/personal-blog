@@ -112,7 +112,6 @@ module.exports = {
             `,
             output: "/rss.xml",
             title: "csgrinding.xyz RSS Feed",
-
           },
         ],
       },
