@@ -155,4 +155,6 @@ func (r Result[T comparable]) Eq(v T) bool {
 }
 ```
 
+---
+
 Sample code can be found [here](https://github.com/bobfang1992/go-result)
