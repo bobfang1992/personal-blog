@@ -139,7 +139,7 @@ func (r Result[T]) Eq(v T) bool {
 }
 ```
 
-But since `T` is not `comparable` here, the `==` operatior will not work. If Go can provide a way to refine the constraints for some methods of a generic type, then it would be a nice feature. E.g.
+But since `T` is not `comparable`, the `==` operatior will not work. If Go can provide a way to refine the constraints for some methods of a generic type, then it would be a nice feature. E.g.
 
 ```go
 // here we refined the T type from any to comparable by providing a more precise constraints in the method receiver type
