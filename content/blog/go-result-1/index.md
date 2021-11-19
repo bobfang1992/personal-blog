@@ -149,9 +149,7 @@ func (r Result[T comparable]) Eq(v T) bool {
     if r.Ok() {
         return r.value == v
     }
-    if r.Ok() {
-        return r.value == v
-    }
+
     return false
 }
 ```
