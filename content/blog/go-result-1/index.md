@@ -112,7 +112,7 @@ return x  = Just x
                 Just x  -> g x
 ```
 
-The nice thing about these two functions, especially for the second function `(>>=)`, is that it allows you to easily combine/chain multiple operations that may or may not yield a result together without taking keep using `if` to check if the result of last operation is `Ok` or not. I am not going to enumerate an example here, but if you are curious you can look at the Hasekll example [here](https://en.wikibooks.org/wiki/Haskell/Understanding_monads/Maybe).
+The nice thing about these two functions, especially for the second function `(>>=)`, is that it allows you to easily combine/chain multiple operations that may or may not yield a result together without the need to keep using `if` to check if the result of last operation is `Ok` or not. I am not going to enumerate an example here, but if you are curious you can look at the Hasekll example [here](https://en.wikibooks.org/wiki/Haskell/Understanding_monads/Maybe).
 
 But Golang is a bit lacking here, at this moment, if everything goes according to the plan, then we wont be able to have another idependent type variable in a generic type's method. So we cannot have something like this:
 
