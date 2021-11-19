@@ -126,7 +126,7 @@ func (r Result[T]) Then(f func(T) Result[S]) Result[S] { // <-- S is not allowed
 }
 ```
 
-IMO, this limtation quite serverly limited the usefulness of the result type.
+IMO, this restriction quite serverly limited the usefulness of the result type.
 
 Another thing I wish we had is C++ style "partial specialization" in Go's generics. For now the constraints for `Result` is `any`, but I do want to provide a function like this for user:
 
