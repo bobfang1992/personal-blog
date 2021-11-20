@@ -1,7 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-
 export default function HTML(props) {
+  let defaultTheme = "light"
+
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -11,7 +12,16 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-
+        {props.headComponents}
+      </head>
+      <body {...props.bodyAttributes} className={defaultTheme}>
+        {props.preBodyComponents}
+        <div
+          key={`body`}
+          id="___gatsby"
+          dangerouslySetInnerHTML={{ __html: props.body }}
+        />
+        {props.postBodyComponents}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-604T10SV5P"
@@ -23,20 +33,39 @@ export default function HTML(props) {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-604T10SV5P');`,
+          gtag('config', 'G-604T10SV5P');
+
+          (function() {
+            window.__onThemeChange = function() {};
+            function setTheme(newTheme) {
+              window.__theme = newTheme;
+              preferredTheme = newTheme;
+              document.body.className = newTheme;
+              window.__onThemeChange(newTheme);
+            }
+            var preferredTheme;
+            try {
+              preferredTheme = localStorage.getItem('theme');
+            } catch (err) { }
+            window.__setPreferredTheme = function(newTheme) {
+              setTheme(newTheme);
+              try {
+                localStorage.setItem('theme', newTheme);
+              } catch (err) {}
+            }
+            var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            darkQuery.addListener(function(e) {
+              window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+            });
+
+            setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+          })();
+          `,
+
           }}
         />
-        {props.headComponents}
-      </head>
-      <body {...props.bodyAttributes}>
-        {props.preBodyComponents}
-        <div
-          key={`body`}
-          id="___gatsby"
-          dangerouslySetInnerHTML={{ __html: props.body }}
-        />
-        {props.postBodyComponents}
       </body>
+
     </html>
   )
 }
