@@ -5,15 +5,24 @@ import Toggle from './toggle'
 import moon from "../images/moon.png"
 import sun from "../images/sun.png"
 
+const isBrowser = typeof window !== "undefined"
+
 const Layout = ({ location, title, children }) => {
-  const [theme, setTheme] = React.useState(window.localStorage.getItem('theme') || 'light')
+  let defaultTheme = "light"
+
+  if (isBrowser) {
+    defaultTheme = window.localStorage.getItem("theme")
+  }
+
+  const [theme, setTheme] = React.useState(defaultTheme)
 
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
-
-  window.__onThemeChange = (theme) => {
-    setTheme(theme)
+  if (isBrowser) {
+    window.__onThemeChange = (theme) => {
+      setTheme(theme)
+    }
   }
 
   if (isRootPath) {
