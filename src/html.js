@@ -15,13 +15,6 @@ export default function HTML(props) {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes} className={defaultTheme}>
-        {props.preBodyComponents}
-        <div
-          key={`body`}
-          id="___gatsby"
-          dangerouslySetInnerHTML={{ __html: props.body }}
-        />
-        {props.postBodyComponents}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-604T10SV5P"
@@ -64,6 +57,13 @@ export default function HTML(props) {
 
           }}
         />
+        {props.preBodyComponents}
+        <div
+          key={`body`}
+          id="___gatsby"
+          dangerouslySetInnerHTML={{ __html: props.body }}
+        />
+        {props.postBodyComponents}
       </body>
 
     </html>

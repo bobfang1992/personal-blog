@@ -5,25 +5,14 @@ import Toggle from './toggle'
 import moon from "../images/moon.png"
 import sun from "../images/sun.png"
 
-const isBrowser = typeof window !== "undefined"
-
 const Layout = ({ location, title, children }) => {
   let defaultTheme = "light"
-
-  if (isBrowser) {
-    defaultTheme = window.localStorage.getItem("theme")
-  }
 
   const [theme, setTheme] = React.useState(defaultTheme)
 
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
-  if (isBrowser) {
-    window.__onThemeChange = (theme) => {
-      setTheme(theme)
-    }
-  }
 
   if (isRootPath) {
     header = (
@@ -42,6 +31,15 @@ const Layout = ({ location, title, children }) => {
       </Link>
     )
   }
+
+  React.useEffect(() => {
+    setTheme(window.localStorage.getItem('theme') || defaultTheme)
+    window.__onThemeChange = (theme) => {
+      setTheme(theme)
+    }
+  }, [])
+
+
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} style={{
@@ -76,7 +74,9 @@ const Layout = ({ location, title, children }) => {
                   />
                 ),
               }}
-              checked={theme === 'dark'}
+              checked={function () {
+                return theme === 'dark'
+              }()}
               onChange={e => {
                 setTheme(e.target.checked ? 'dark' : 'light')
                 window.__setPreferredTheme(
