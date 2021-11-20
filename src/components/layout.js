@@ -52,7 +52,9 @@ const Layout = ({ location, title, children }) => {
         <div style={{ "display": "flex", "justifyContent": "space-between" }}>
           <div>{header}</div>
 
-          <div>
+          <div style={{
+            'margin-top': 'auto'
+          }}>
             <Toggle
               icons={{
                 checked: (
