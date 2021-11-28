@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "csgrinding.xyz",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Bob Fang's Blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "Bob Fang <bob.fang.london@gmail.com>",
   "dependencies": {
     "@deckdeckgo/highlight-code": "^3.5.0",
     "gatsby": "^4.2.0",
@@ -39,16 +36,10 @@
   "devDependencies": {
     "prettier": "2.4.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
-  },
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
