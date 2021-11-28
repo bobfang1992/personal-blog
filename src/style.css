@@ -112,6 +112,7 @@ body.dark {
   --inlineCode-bg: rgba(115, 124, 153, 0.2);
   --inlineCode-text: #e6e6e6;
   --form-shadow: 0 2px 15px 0 rgba(26, 26, 27, 0.637);
+  --color-text-light: #c0afaf;
 }
 
 footer {
