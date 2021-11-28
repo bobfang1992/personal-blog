@@ -49,6 +49,9 @@ module.exports = {
               terminal: "carbon",
             },
           },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
           {
             resolve: `gatsby-remark-footnotes`,
             options: {
@@ -59,13 +62,10 @@ module.exports = {
               footnoteBackRefAnchorStyle: `text-decoration: none;`,
               //use "front" for Wikipedia style ^ links
               footnoteBackRefInnerTextStartPosition: "front",
-              useFootnoteMarkerText: false, // Defaults to false
+              useFootnoteMarkerText: true, // Defaults to false
               useCustomDivider: "<hr/><strong>References:</strong>" // Defaults to <hr/>
             }
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
         ],
       },
     },
