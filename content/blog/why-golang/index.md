@@ -33,7 +33,7 @@ func doSomething(..., int* mode) {
 }
 ```
 
-Just so that the caller can optionally choose to not pass in a parameter, but still this is unsatisfying,  user still need to pass `nil` for `mode` here to actually make their code compiles, but this is already much better than other options like making your function to accept variadic args, an map of `interface{}` or use a special `struct` for your function's input listed in this [SO answer](https://stackoverflow.com/questions/2032149/optional-parameters-in-go)
+Just so that the caller can optionally choose to not pass in a parameter, but still this is unsatisfying,  user still need to pass `nil` for `mode` here to actually make their code compiles, but this is already much better than other options listed in this [SO answer](https://stackoverflow.com/questions/2032149/optional-parameters-in-go), like making your function to accept variadic args, an map of `interface{}` or a special `struct`.
 
 # No dedicated enum types
 
@@ -47,15 +47,17 @@ Again, Golang community will come up (or has already come up) with all sorts of 
 fmt.Println(t.Format("20060102150405"))
 ```
 
-It formats a `datetime` object to `yyyyMMddHHmmss` format. But what is the deal with that special number? It seems that Golang core team has decided to use a specific time point, `"2006-01-02T15:04:05Z07:00"` is more readable than universal `"yyyyMMddHHmmss"` as a time format directive. Why? I do not understand. But I can only guess how much energy are wasted to adopt to this style, which are forced to programmers through the standard library.
+It formats a `datetime` object to `yyyyMMddHHmmss` format. But what is the deal with that special number? It seems that Golang core team has decided a specific time point, `"2006-01-02T15:04:05Z07:00"` is more readable than universal `"yyyyMMddHHmmss"` as a time format directive. Why? I can hardly imagine. But I can only underestimate how much energy are wasted to adopt to this style, which are forced upon many programmers through the standard library.
 
 ---
 
 The list can go on, but let me stop here, as no programming language is perfect. I think you got the idea, Golang has some real issues it needs to deal with, but still it has become very successful. So why? What's the benefit? Why people like/still uses it despite its flaws?
 
+---
+
 # Money
 
-One factor that should not go unnoticed it that it has a trillion dollar company's backing. I think it should be universally acknowledged by now that not every language are created equal. Apple has `Objective-c/Swift`, and Google itself has backed `Kotlin` and `Dart`. These languages all enjoyed some level of popularity. Are they the best languages? Maybe, maybe not. But if you want a language that are well maintained, and has the possibility of evolving, you would choose one that has some commercial backing, right? 
+One factor that should not go unnoticed it that it has a trillion-dollar company's backing. I think it should be universally acknowledged by now that not every language are created equal. Apple has `Objective-c/Swift`, and Google itself has backed `Kotlin` and `Dart`. These languages all enjoyed some level of popularity. Are they the best languages? Maybe, maybe not. But if you want a language that are well maintained, and has the possibility of evolving, you would choose one that has some commercial backing, right? 
 
 # Concurrency
 
