@@ -11,11 +11,15 @@ But why? Why Golang? Obviously Golang is very opinionated language, and one has 
 # Generics
 
 Supporting generics is so essential in building modern software, but Golang only starts to support them in the upcoming release, 1.18. That is almost a decade after its initial release. I think no one enjoys writing the following code when other languages can provide similar functionality easily with parametric polymorphism. (It is a humor piece, I know.)
+
+
+
+
 ![](golang-generic.gif)
 
 # Error handling
 
-I am not going to say that exception is a wonderful thing, and every language should have them. Also `Option` or `Maybe`types have their own pros and cons, and may not be suitable for every scenario. But Golang community's choice of using `if err != nil` just seems pretty primitive these days. I think the Golang community even tried to compensated the lack of proper error handling by inventing a new coding style, called ["the happy path"]([Go Happy Path: the Unindented Line of Sight | maelvls dev blog](https://maelvls.dev/go-happy-line-of-sight/)). It is a nice try, and maybe to some extend it make sense, but still I would prefer we are not forced to check error codes for every single function call...
+I am not going to say that exception is a wonderful thing, and every language should have them. Also `Option` or `Maybe`types have their own pros and cons, and may not be suitable for every scenario. But Golang community's choice of using `if err != nil` just seems pretty primitive these days. I think the Golang community even tried to compensate the lack of proper error handling by inventing a new coding style, called ["the happy path"]([Go Happy Path: the Unindented Line of Sight | maelvls dev blog](https://maelvls.dev/go-happy-line-of-sight/)). It is a nice try, and maybe to some extend it make sense, but still I would prefer we are not forced to check error codes for every single function call...
 
 # No default or optional arguments
 
@@ -34,7 +38,37 @@ Just so that the caller can optionally choose to not pass in a parameter, but st
 
 # No dedicated enum types
 
-Again, Golang community will come up with all sorts of excuses that why this is not needed. But I think [this example]([Go is a terrible language | Have you Debugged.IT?](https://debugged.it/blog/go-is-terrible/#no-enums)) has perfectly summed up the problem with not having a syntax construct for defining "clean" enums. I just cannot understand why we still need to leave with C-style unscoped enums in 2021.
+Again, Golang community will come up (or has already come up) with all sorts of excuses that why this is not needed. But I think [this example]([Go is a terrible language | Have you Debugged.IT?](https://debugged.it/blog/go-is-terrible/#no-enums)) has perfectly summed up the problem with not having a syntax construct for defining "clean" enums. I just cannot understand why we still need to leave with C-style unscoped enums in 2021.
+
+
+
+# Arrogant library design
+
+ Can you guess what does this line do?
+
+```go
+fmt.Println(t.Format("20060102150405"))
+```
+
+It formats a `datetime` object to `yyyyMMddHHmmss` format. But what is the deal with that special number? It seems that Golang core team has decided to use a specific time point, `"2006-01-02T15:04:05Z07:00"` is more readable than universal `"yyyyMMddHHmmss"` as a time format directive. Why? I do not understand. But I can only guess how much energy are wasted to adopt to this style, which are forced to programmers through the standard library.
+
+---
+
+The list can go on, but let me stop here, as no programming language is perfect. I think you got the idea, Golang has some real issues it needs to deal with, but still it has become very successful. So why? What's the benefit? Why people like/still uses it despite its flaws?
+
+
+
+# Money
+
+**One factor** that should not go unnoticed it that it has a trillion dollar company's backing. I think it should be universally acknowledged by now that not every language are created equal. Apple has `Objective-c/Swift`, and Google itself has backed `Kotlin` and `Dart`. These languages all enjoyed some level of popularity. Are they the best languages? Maybe, maybe not. But if you want a language that are well maintained, and has the possibility of evolving, you would choose one that has some commercial backing, right? 
+
+
+
+# Async Programming/Concurrency
+
+
+
+
 
 
 
