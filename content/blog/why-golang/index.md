@@ -4,7 +4,7 @@ date: 2021-11-28T11:58:37Z
 description: Why would you choose Golang for your company?
 ---
 
-> 👍 I am going to use Golang to refer to what is known as the Go programming language, simply because it is more search engine friendly. 
+> 💡 I am going to use Golang to refer to what is known as the Go programming language, simply because it is more search engine friendly. 
 
 There are two **new** languages[^1], that comes out of the 2010s era as strong winners, [Golang](https://go.dev/) and [Rust](https://rust-lang.org/). While Rust is apparently the new lover of the developer community, I think Golang has enjoyed more commercial success. For example some of the biggest unicorns coming out of this age are using Golang as their main language: Coinbase, Twitch, Uber and where I work: Tiktok.
 
@@ -13,9 +13,6 @@ But why? Why Golang? Obviously Golang is very opinionated language, and one has 
 # Generics
 
 Supporting generics is so essential in building modern software, but Golang only starts to support them in the upcoming release, 1.18. That is almost a decade after its initial release. I think no one enjoys writing the following code when other languages can provide similar functionality easily with parametric polymorphism. (It is a humor piece, I know.)
-
-
-
 
 ![](golang-generic.gif)
 
@@ -42,8 +39,6 @@ Just so that the caller can optionally choose to not pass in a parameter, but st
 
 Again, Golang community will come up (or has already come up) with all sorts of excuses that why this is not needed. But I think [this example](https://debugged.it/blog/go-is-terrible/#no-enums) has perfectly summed up the problem with not having a syntax construct for defining "clean" enums. I just cannot understand why we still need to leave with C-style unscoped enums in 2021.
 
-
-
 # Arrogant library design
 
  Can you guess what does this line do?
@@ -58,13 +53,9 @@ It formats a `datetime` object to `yyyyMMddHHmmss` format. But what is the deal 
 
 The list can go on, but let me stop here, as no programming language is perfect. I think you got the idea, Golang has some real issues it needs to deal with, but still it has become very successful. So why? What's the benefit? Why people like/still uses it despite its flaws?
 
-
-
 # Money
 
 One factor that should not go unnoticed it that it has a trillion dollar company's backing. I think it should be universally acknowledged by now that not every language are created equal. Apple has `Objective-c/Swift`, and Google itself has backed `Kotlin` and `Dart`. These languages all enjoyed some level of popularity. Are they the best languages? Maybe, maybe not. But if you want a language that are well maintained, and has the possibility of evolving, you would choose one that has some commercial backing, right? 
-
- 
 
 # Concurrency
 
@@ -77,8 +68,6 @@ Some would argue that Golang has been successful for concurrency. The appeal com
 * have little need for manual control: users are not required to manually join a goroutine, GC will take care of most of the work when a goroutine finishes its work.
 
 These options, when provided in the early 2010s, are much better than the alternatives, where the only option to get some kind of concurrency is to use low-level OS threads, possibly forcing you to implement a thread-pool so your service does not blow up the memory usage when there are many connections.
-
-
 
 But are goroutines so special that it makes Golang the only scalable language? I think not. Recent years has seen the rise of async programming, notably first in `node.js` but later in `Python` and `C++`. More and more languages are incorporating coroutines natively and goroutines are nothing but just another type of them, see below excerpt from [the Golang doc](https://go.dev/doc/faq#goroutines).
 
@@ -96,8 +85,6 @@ Many would argue that first class channels, or the general adoption of [CSP](htt
 
 So I am not convinced that channels make everything better. I see why they are useful, but I do not see why they cannot be implemented as libraries in other languages.
 
-
-
 # Build, Performance and Deployment
 
 Golang's compiler is unreasonably fast. Compiling a project with 131 files and more than 26k lines of code only take less than 5 seconds on my local machine. This is much much better than any C++ compilers out there, and although I am not a Java™ user I am pretty certain that none of the Java compilers can achieve the same level of performance. 
@@ -110,20 +97,6 @@ Golang has another advantage over interpreted languages which is when deploying,
 
 I have some mixed feeling of Golang at this moment, on the one hand it is really primitive. Using it feels like using a knife in a battle field when everyone else are already using laser guns. But it do has something that other language cannot offer at this moment: a fast compiler, a very performant coroutine implementation (special call out to its [GMP scheduler](https://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit)), an active community and a few killer apps like `docker` and `k8s`.
 
-
-
 I guess ultimately the big question is that if I am just building a web service that does not need to serve millions of users at the same time, will I choose Golang? Probably not as then Python is much more ergonomic (with its async support) and I am pretty sure the developer productivity boost will outweigh the run-time performance degradation. But if you are a large company and you do need to think about the money saved on using less memory and CPU? Maybe, just maybe, Golang will make it worthwhile for you. 
-
-
-
-
-
-
-
-
-
-
-
-
 
 [^1]: Some may argue the most successful language of this era is Python, because of the rise of machine learning and data science. But remember Python is an "old" language, it just celebrated its 30th birthday. Here we emphasis the real new languages of the past decade.
