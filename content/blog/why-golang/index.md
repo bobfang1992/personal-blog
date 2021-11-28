@@ -22,7 +22,7 @@ I am not going to say that exception is a wonderful thing, and every language sh
 
 # No default or optional arguments
 
-So people start using pointers to represent an optional argument. I think I have seen written a number of code that looks like this:
+So people start using pointers to represent an optional argument. I think I have seen and even written a number of functions that looks like this:
 
 ```go
 func doSomething(..., int* mode) {
