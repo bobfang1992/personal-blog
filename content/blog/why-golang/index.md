@@ -64,7 +64,21 @@ The list can go on, but let me stop here, as no programming language is perfect.
 
 
 
+# Performance
+
+Go is undeniably faster than most of the interpreted languages, like Ruby or Python. 
+
 # Async Programming/Concurrency
+
+Some would argue that Golang has been successful for concurrency. The appeal comes from being able to launch a million goroutines, each serving one user, without running into major memory or CPU limitations. In the beginning of the decade we were facing a major scalability issue - the [C10k problem]([C10k problem - Wikipedia](https://en.wikipedia.org/wiki/C10k_problem)). Golang cleverly provided an escape from this, by providing a new primitive, goroutines, that:
+
+* are fast to launch, usually an order of magnitude faster than OS-level threads
+
+* have small memory foot-print, only 4k stack size initially but can grow as needed
+
+* have little need for manual control: users are not required to manually join a goroutine, GC will take care of most of the work when a goroutine finishes its work.
+
+These options, when provided in the early 2010s, are much better than the alternatives where users are still required to face raw OS-level threads and async-programming has not entered the mainstream.
 
 
 
