@@ -8,13 +8,38 @@ description: Why would you choose Golang for your company?
 
 There are two **new** languages[^1], that comes out of the 2010s era as strong winners, [Golang](https://go.dev/) and [Rust](https://rust-lang.org/). While Rust is apparently the new lover of the developer community, I think Golang has enjoyed more commercial success. For example some of the biggest unicorns coming out of this age are using Golang as their main language: Coinbase, Twitch, Uber and where I work: Tiktok.
 
-But why? Why Golang? Obviously Golang is very opinionated language, and one has to admit that some choices made are not not appealing to everyone. Some problems are mentioned repeatably, which I will nonetheless mention again here as I personally find them hard to swallow as well.
+But why? Why Golang? Obviously Golang is very opinionated language, and one has to admit that some choices made are not not appealing to everyone. Some problems are mentioned repeatably, which I will nonetheless reiterate here as I personally find them hard to swallow as well.
 
 # Generics
 
-Supporting generics is so essential in building modern software, but Golang only starts to support them in the upcoming release, 1.18. That is almost a decade after its initial release. I think no one enjoys writing the following code when other languages can provide similar functionality easily with parametric polymorphism. (It is a humor piece, I know.)
+Supporting generics is so essential in building modern software, but Golang only plan to start to support them in the upcoming release, 1.18. That is almost a decade after its initial release. I think no one enjoys writing the following code when other languages can provide similar functionality easily with parametric polymorphism.
 
-![](golang-generic.gif)
+```go
+func MinInt(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
+}
+
+func MinInt32(a, b int32) int32 {
+    if a < b {
+        return a
+    }
+    return b
+}
+
+func MinInt64(a, b int64) int64 {
+    if a < b {
+        return a
+    }
+    return b
+}
+```
+
+![meme](./meme.jpg)
+
+Image Source [^2]
 
 # Error handling
 
@@ -37,7 +62,7 @@ Just so that the caller can optionally choose to not pass in a parameter, but st
 
 # No dedicated enum types
 
-Again, Golang community will come up (or has already come up) with all sorts of excuses that why this is not needed. But I think [this example](https://debugged.it/blog/go-is-terrible/#no-enums) has perfectly summed up the problem with not having a syntax construct for defining "clean" enums. I just cannot understand why we still need to leave with C-style unscoped enums in 2021.
+Again, Golang community will come up (or has already come up) with all sorts of excuses that why this is not needed. But I think [this example](https://debugged.it/blog/go-is-terrible/#no-enums) has perfectly summed up the problem with not having a syntax construct for defining "clean" enums. I just cannot understand why we still need to deal with C-style unscoped enums in 2021.
 
 # Arrogant library design
 
@@ -102,3 +127,5 @@ I have some mixed feeling of Golang at this moment, on the one hand it is really
 I guess ultimately the big question is that if I am just building a web service that does not need to serve millions of users at the same time, will I choose Golang? Probably not as then Python is much more ergonomic (with its async support) and I am pretty sure the developer productivity boost will outweigh the run-time performance degradation. But if you are a large company and you do need to think about the money saved on using less memory and CPU? Maybe, just maybe, Golang will make it worthwhile for you. 
 
 [^1]: Some may argue the most successful language of this era is Python, because of the rise of machine learning and data science. But remember Python is an "old" language, it just celebrated its 30th birthday. Here we emphasis the real new languages of the past decade.
+
+[^2]: [Go and generics : ProgrammerHumor](https://www.reddit.com/r/ProgrammerHumor/comments/93ua1q/go_and_generics/)
