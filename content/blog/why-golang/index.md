@@ -21,7 +21,7 @@ Supporting generics is so essential in building modern software, but Golang only
 
 # Error handling
 
-I am not going to say that exception is a wonderful thing, and every language should have them. Also `Option` or `Maybe`types have their own pros and cons, and may not be suitable for every scenario. But Golang community's choice of using `if err != nil` just seems pretty primitive these days. I think the Golang community even tried to compensate the lack of proper error handling by inventing a new coding style, called ["the happy path"]([Go Happy Path: the Unindented Line of Sight | maelvls dev blog](https://maelvls.dev/go-happy-line-of-sight/)). It is a nice try, and maybe to some extend it make sense, but still I would prefer we are not forced to check error codes for every single function call...
+I am not going to say that exception is a wonderful thing, and every language should have them. Also `Option` or `Maybe`types have their own pros and cons, and may not be suitable for every scenario. But Golang community's choice of using `if err != nil` just seems pretty primitive these days. I think the Golang community even tried to compensate the lack of proper error handling by inventing a new coding style, called ["the happy path"](https://maelvls.dev/go-happy-line-of-sight/). It is a nice try, and maybe to some extend it make sense, but still I would prefer we are not forced to check error codes for every single function call...
 
 # No default or optional arguments
 
@@ -36,11 +36,11 @@ func doSomething(..., int* mode) {
 }
 ```
 
-Just so that the caller can optionally choose to not pass in a parameter, but still this is unsatisfying,  user still need to pass `nil` for `mode` here to actually make their code compiles, but this is already much better than other options like making your function to accept variadic args, an map of `interface{}` or use a special `struct` for your function's input listed in this [SO answer]([overloading - Optional Parameters in Go? - Stack Overflow](https://stackoverflow.com/questions/2032149/optional-parameters-in-go))
+Just so that the caller can optionally choose to not pass in a parameter, but still this is unsatisfying,  user still need to pass `nil` for `mode` here to actually make their code compiles, but this is already much better than other options like making your function to accept variadic args, an map of `interface{}` or use a special `struct` for your function's input listed in this [SO answer](https://stackoverflow.com/questions/2032149/optional-parameters-in-go)
 
 # No dedicated enum types
 
-Again, Golang community will come up (or has already come up) with all sorts of excuses that why this is not needed. But I think [this example]([Go is a terrible language | Have you Debugged.IT?](https://debugged.it/blog/go-is-terrible/#no-enums)) has perfectly summed up the problem with not having a syntax construct for defining "clean" enums. I just cannot understand why we still need to leave with C-style unscoped enums in 2021.
+Again, Golang community will come up (or has already come up) with all sorts of excuses that why this is not needed. But I think [this example](https://debugged.it/blog/go-is-terrible/#no-enums) has perfectly summed up the problem with not having a syntax construct for defining "clean" enums. I just cannot understand why we still need to leave with C-style unscoped enums in 2021.
 
 
 
@@ -68,7 +68,7 @@ One factor that should not go unnoticed it that it has a trillion dollar company
 
 # Concurrency
 
-Some would argue that Golang has been successful for concurrency. The appeal comes from being able to launch thousands of goroutines, each serving one user, without running into major memory or CPU limitations. In the beginning of the decade the industry were facing the [C10k problem]([C10k problem - Wikipedia](https://en.wikipedia.org/wiki/C10k_problem)). Golang cleverly provided an escape from this, by providing a new primitive, goroutines, that:
+Some would argue that Golang has been successful for concurrency. The appeal comes from being able to launch thousands of goroutines, each serving one user, without running into major memory or CPU limitations. In the beginning of the decade the industry were facing the [C10k problem](https://en.wikipedia.org/wiki/C10k_problem). Golang cleverly provided an escape from this, by providing a new primitive, goroutines, that:
 
 * are fast to launch, usually an order of magnitude faster than OS-level threads
 
@@ -80,7 +80,7 @@ These options, when provided in the early 2010s, are much better than the altern
 
 
 
-But are goroutines so special that it makes Golang the only scalable language? I think not. Recent years has seen the rise of async programming, notably first in `node.js` but later in `Python` and `C++`. More and more languages are incorporating coroutines natively and goroutines are nothing but just another type of them, see below excerpt from [the Golang doc]([Frequently Asked Questions (FAQ) - go.dev](https://go.dev/doc/faq#goroutines)).
+But are goroutines so special that it makes Golang the only scalable language? I think not. Recent years has seen the rise of async programming, notably first in `node.js` but later in `Python` and `C++`. More and more languages are incorporating coroutines natively and goroutines are nothing but just another type of them, see below excerpt from [the Golang doc](https://go.dev/doc/faq#goroutines).
 
 > Goroutines are part of making concurrency easy to use. The idea, which has been around for a while, is to multiplex independently executing functions—coroutines—onto a set of threads. When a coroutine blocks, such as by calling a blocking system call, the run-time automatically moves other coroutines on the same operating system thread to a different, runnable thread so they won't be blocked. The programmer sees none of this, which is the point. The result, which we call goroutines, can be very cheap: they have little overhead beyond the memory for the stack, which is just a few kilobytes.
 > 
@@ -88,7 +88,7 @@ But are goroutines so special that it makes Golang the only scalable language? I
 
 So IMO basically Golang is just one step ahead of other language on this front, by providing a cheap and easy-to-use coroutine primitive that none other languages were providing. And there is no deny that Golang's goroutine implementation is outstanding, the goroutine scheduler works like a charm specially. So it wins a lot of user who has the need to write concurrent code, especially for things like networking or distributed systems. It is then no wonder that this is the area where Golang has enjoyed a great success, building cloud native infra like `docker`, `kubernetes` and online real-time services like `Uber` or `Twitch`.
 
-Many would argue that first class channels, or the general adoption of [CSP]([Communicating sequential processes - Wikipedia](https://en.wikipedia.org/wiki/Communicating_sequential_processes)) has made writing concurrent code easier in Golang, I am not going to say that I disagree, because I do not think I have enough experience against the claim. But I would not say I support it either. For two major reasons:
+Many would argue that first class channels, or the general adoption of [CSP](https://en.wikipedia.org/wiki/Communicating_sequential_processes) has made writing concurrent code easier in Golang, I am not going to say that I disagree, because I do not think I have enough experience against the claim. But I would not say I support it either. For two major reasons:
 
 1. We are still using a fair bit share-memory communication in Golang still. The `sync` package can be seen used very commonly in any Golang repo, where people use concurrency primitives like `Lock` or `Waitgroup`. 
 
@@ -108,7 +108,7 @@ Golang has another advantage over interpreted languages which is when deploying,
 
 # Conclusion
 
-I have some mixed feeling of Golang at this moment, on the one hand it is really primitive. Using it feels like using a knife in a battle field when everyone else are already using laser guns. But it do has something that other language cannot offer at this moment: a fast compiler, a very performant coroutine implementation (special call out to its [GMP scheduler]([Scalable Go Scheduler Design Doc - Google Docs](https://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit))), an active community and a few killer apps like `docker` and `k8s`.
+I have some mixed feeling of Golang at this moment, on the one hand it is really primitive. Using it feels like using a knife in a battle field when everyone else are already using laser guns. But it do has something that other language cannot offer at this moment: a fast compiler, a very performant coroutine implementation (special call out to its [GMP scheduler](https://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit)), an active community and a few killer apps like `docker` and `k8s`.
 
 
 
