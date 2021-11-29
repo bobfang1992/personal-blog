@@ -43,7 +43,7 @@ Image Source [^2]
 
 # Error handling
 
-I am not going to say that exception is a wonderful thing, and every language should have them. Also `Option` or `Maybe`types have their own pros and cons, and may not be suitable for every scenario. But Golang community's choice of using `if err != nil` just seems pretty primitive these days. I think the Golang community even tried to compensate the lack of proper error handling by inventing a new coding style, called ["the happy path"](https://maelvls.dev/go-happy-line-of-sight/). It is a nice try, and maybe to some extend it make sense, but still I would prefer we are not forced to check error codes for every single function call...
+I am not going to say that exception is a wonderful thing, and every language should have them. Also `Option` or `Maybe` types have their own pros and cons, and may not be suitable for every scenario. But Golang community's choice of using `if err != nil` just seems pretty primitive these days. I think the Golang community even tried to compensate the lack of proper error handling by inventing a new coding style, called ["the happy path"](https://maelvls.dev/go-happy-line-of-sight/). It is a nice try, and maybe to some extend it make sense, but still I would prefer we are not forced to check error codes for every single function call...
 
 # No default or optional arguments
 
