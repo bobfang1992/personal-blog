@@ -8,11 +8,11 @@ description: Why would you choose Golang for your company?
 
 There are two **new** languages[^1], that comes out of the 2010s era as strong winners, [Golang](https://go.dev/) and [Rust](https://rust-lang.org/). While Rust is apparently the new lover of the developer community, I think Golang has enjoyed more commercial success. For example some of the biggest unicorns coming out of this age are using Golang as their main language: Coinbase, Twitch, Uber and where I work: Tiktok.
 
-But why? Why Golang? Obviously Golang is very opinionated language, and one has to admit that some choices made are not not appealing to everyone. Some problems are mentioned repeatably, which I will nonetheless reiterate here as I personally find them hard to swallow as well.
+But why? Why Golang? Obviously Golang is very opinionated language. One has to admit that some choices Golang made are not not appealing to everyone. A few problems are mentioned repeatably, which nonetheless will be reiterated here as I personally find them hard to swallow as well.
 
 # Generics
 
-Supporting generics is so essential in building modern software, but Golang only plan to start to support them in the upcoming release, 1.18. That is almost a decade after its initial release. I think no one enjoys writing the following code when other languages can provide similar functionality easily with parametric polymorphism.
+Supporting generics is so essential in building modern software, but Golang only plans to start supporting them in the upcoming release, 1.18. That is almost a decade after its initial release. I think no one enjoys writing the following code when other languages can provide similar functionality easily with parametric polymorphism.
 
 ```go
 func MinInt(a, b int) int {
