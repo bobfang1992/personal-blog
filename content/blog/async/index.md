@@ -80,7 +80,7 @@ And plotting for only `asyncio`:
 
 ![async-perf](./async-perf.png)
 
-In general, even when using multi-threading in Python, getting all the responses we need is slower by 3.5 times than using `asyncio`. This might be unintuitive, as `asyncio` uses only one thread. But as mentioned previously, the GIL is playing a role here, so there is no concurrency, although we have multiple threads. In contrast, in `asyncio,` the concurrency is achieved through OS provided [IO multiplexing](https://wiki.c2.com/?IoMultiplexing) -- a single thread can wait on multiple IO events simultaneously using the `epoll` system call and schedule its work using an event loop.
+In general, even when using multi-threading in Python, getting all the responses we need is slower by 3.5 times than using `asyncio`. This might be unintuitive, as `asyncio` uses only one thread. But as mentioned previously, the GIL is playing a role here, so there is no concurrency, although we have multiple threads. In contrast, in `asyncio`, the concurrency is achieved through OS-provided [IO multiplexing](https://wiki.c2.com/?IoMultiplexing) -- a single thread can wait on multiple IO events simultaneously using the `epoll` system call and schedule its work using an event loop.
 
 But I am not satisfied. Although `asyncio` is faster, if we look at the blue line, the total time to get all the response has a linear relationship with the number of requests we sent. My theory was that when using `asyncio`, since the GIL does not bound us, we simultaneously established many TCP connections to the server.  Assuming the server itself is concurrent, we should get all the responses back at an almost identical time. Thus the blue line's slope should not be that obvious.
 
