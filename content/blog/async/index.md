@@ -17,7 +17,7 @@ Lately, I have been working on a project suitable for applying async programming
 
 As a long time user, the first language that comes to my mind is Python. Traditionally, Python has limited concurrency support. It has a `threading` library, but in Python, there should be only one thread running at each given time because of the Global Interpreter Lock (GIL), thus limiting the usefulness of threads [^1]. Python also has a `multiprocessing` module in the standard library. However, its drawback is that it forces the programmers to deal with Inter-Process Communication (IPC) — the default choice is too restricting (pickles). 
 
-Even if Python had good support of threading and (sub)processes, I am not too keen to use them because they are often too low-level to be helpful. You need to handle communication and synchronisation. Threads/processes are system-level resources, so proper clean up is always required, adding unnecessary complexity to application code. Plus, compared to other concurrency models like coroutines, threads and processes are more always more expensive -- they consume more memory and are slower to start.
+Even if Python had good support of threading and (sub)processes, I am not too keen to use them because they are often too low-level to be helpful. You need to handle communication and synchronisation. Threads/processes are system-level resources, so proper clean up is always required, adding unnecessary complexity to application code. Plus, compared to other concurrency models like coroutines, threads and processes are always more expensive -- they consume more memory and are slower to start.
 
 ## Asyncio!
 
