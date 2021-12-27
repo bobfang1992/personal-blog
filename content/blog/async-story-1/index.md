@@ -5,10 +5,6 @@ description: 异步故事第一期 -- 讲一讲使用异步编程的的动机
 ---
 
 
-# 异步故事
-
-#vlog
-
 这是我vlog的文字稿，vlog可以在这里观看：[https://www.youtube.com/watch?v=eoJUmM7O8-A](https://www.youtube.com/watch?v=eoJUmM7O8-A)
 
 
