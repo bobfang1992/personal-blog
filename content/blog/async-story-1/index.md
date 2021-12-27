@@ -9,6 +9,9 @@ description: 异步故事第一期 -- 讲一讲使用异步编程的的动机
 
 #vlog
 
+这是我vlog的文字稿，vlog可以在这里观看：[https://www.youtube.com/watch?v=eoJUmM7O8-A](https://www.youtube.com/watch?v=eoJUmM7O8-A)
+
+
 # 开场
 
 大家好，之前因为一些个人原因，一直没能及时更新这个频道。最近生活逐渐稳定下来。终于有时间来跟大家讲一讲我一直很关注的一个业界趋势了。
