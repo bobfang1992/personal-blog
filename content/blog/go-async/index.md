@@ -4,6 +4,8 @@ date: 2022-02-20T09:31:43Z
 description: It is idiomatic to use channels in Go, so why do we need async/await?
 ---
 
+> TL; DR: Why I think async/await might have a place in Golang, and we don't even need a new syntax.
+
 # A mistake
 
 Let me start this blog by observing one common mistake I found among people who are new to Golang, say if we have an API that sets some data from a data store:
