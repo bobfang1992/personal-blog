@@ -88,8 +88,7 @@ async function GetDataAsIntAsync(key) {
 }
 
 // inside an async function
-hello = await GetDataAsIntAsync("hello")
-foo = await GetDataAsIntAsync("hello")
+const [hello, foo] = await Promise.all([GetDataAsIntAsync("hello"), GetDataAsIntAsync("hello")]);
 ```
 
 I feel this is much cleaner. Can we have this in Golang? Probably not before Golang 1.18, but with the introduction of Go Generics, I feel we might be onto something. We've already [talked about](https://csgrinding.xyz/go-result-1/) the `Result` type in Golang, but can we take it further? Luckily someone already did! I recently found this [repo](https://github.com/nkcmr/async) and I think it is promising.
