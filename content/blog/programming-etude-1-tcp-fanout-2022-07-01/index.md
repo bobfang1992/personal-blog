@@ -8,7 +8,7 @@ description: Learning TCP under pressure
 
 I have _never_ worked with raw TCP socket API before. However, I know the concepts and have worked with various application-level protocols like HTTP and web sockets. As it happened, some friends challenged me to write a TCP fanout server in 45 minutes. The requirement is simple: I can choose any language and use Google to search for any documentation. The code does not need to be production-ready but should be well written. It felt like an interview, and I am glad to report that I survived to tell the lessons I learned from this little exercise.
 
-The first step is understanding the task. We have a server. Let’s call it server A. The server will continuously send out fixed-length messages to any client. Your job is to write a program that reads from this server and broadcast the messages you got to any clients of your server.
+The first step is understanding the task. We have a server. Let’s call it server A. The server will continuously send out fixed-length messages to the client, but it can only support one client. Your job is to write a program that reads from this server and broadcast the messages you got to any clients of your server.
 
 <img src="./Paper.Code.21.PNG" alt="Paper.Code.21" style="width: 100%;">
 
