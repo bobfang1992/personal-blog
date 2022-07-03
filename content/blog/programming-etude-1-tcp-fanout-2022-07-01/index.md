@@ -1,9 +1,14 @@
-# Programming Etude 1: A TCP fanout server
-> TLDR: Without previous experience, I tried to write a TCP fanout server in 45 minutes, learning the APIs on the fly. Here is my experience and result. 
+---
+title: Programming Etude 1 - A TCP fanout server
+date: 2022-07-03T10:54:34Z
+description: Learning TCP under pressure
+---
 
-I have *never* worked with raw TCP socket API before. However, I know the concepts and have worked with various application-level protocols like HTTP and web sockets. As it happened, some friends challenged me to write a TCP fanout server in 45 minutes. The requirement is simple: I can choose any language and use Google to search for any documentation. The code does not need to be production-ready but should be well written. It felt like an interview, and I am glad to report that I survived to tell the lessons I learned from this little exercise.
+> TLDR: Without previous experience, I tried to write a TCP fanout server in 45 minutes, learning the APIs on the fly. Here is my experience and result.
 
-The first step is understanding the task. We have a server. Let’s call it server A. The server will continuously send out fixed-length messages to any client. Your job is to write a program that reads from this server and broadcast the messages you got to any clients of your server. 
+I have _never_ worked with raw TCP socket API before. However, I know the concepts and have worked with various application-level protocols like HTTP and web sockets. As it happened, some friends challenged me to write a TCP fanout server in 45 minutes. The requirement is simple: I can choose any language and use Google to search for any documentation. The code does not need to be production-ready but should be well written. It felt like an interview, and I am glad to report that I survived to tell the lessons I learned from this little exercise.
+
+The first step is understanding the task. We have a server. Let’s call it server A. The server will continuously send out fixed-length messages to any client. Your job is to write a program that reads from this server and broadcast the messages you got to any clients of your server.
 
 ![Paper.Code.21](./Paper.Code.21.PNG)
 
@@ -18,7 +23,7 @@ def open_read_only_socket(remote_addresss, port):
     return s
 ```
 
-Yes, I will use Python to crack it, and no, I don't remember the parameters I should use to create a TCP connection by heart. I need to look at the [official documentation](https://docs.python.org/3/howto/sockets.html) to know that I must use AF_INET and SOCK_STREAM for a TCP connection. Once we have an open connection, we might want to read the fixed-size message from server A. 
+Yes, I will use Python to crack it, and no, I don't remember the parameters I should use to create a TCP connection by heart. I need to look at the [official documentation](https://docs.python.org/3/howto/sockets.html) to know that I must use AF_INET and SOCK_STREAM for a TCP connection. Once we have an open connection, we might want to read the fixed-size message from server A.
 
 ```python
 def read_1k_from_socket(socket):
@@ -65,11 +70,11 @@ Notice that the `bind` call will create a server-side socket, with which we can 
 
 This seems to suggest that it is several concurrent connections you can have. If you think so, you'd be wrong. As explained in this [StackOverflow post,](https://stackoverflow.com/a/2444491/1370639) it is the number of connections you have not yet accepted. As a rule of thumb, a server should try its best to accept connections as soon as possible. So if the rest of your code is correct, five should be more than enough, and ten is generous.
 
-The next bit is a bit challenging. In theory, your program is always in a for loop, waiting for new messages from server A (see the code above). So how does it accept new clients? 
+The next bit is a bit challenging. In theory, your program is always in a for loop, waiting for new messages from server A (see the code above). So how does it accept new clients?
 
-"How do I do two things at the same time?" I asked myself... 
+"How do I do two things at the same time?" I asked myself...
 
- Threads! We need a dedicated thread to accept any new clients' connections. We need to start the thread before the while loop:
+Threads! We need a dedicated thread to accept any new clients' connections. We need to start the thread before the while loop:
 
 ```python
 def server(a_address: str, a_port: int, server_port: int):
@@ -111,13 +116,13 @@ Great! We know we reached a milestone where we can read messages off server A an
 
 I think some design is due. I kind of regret not doing this in the beginning, but here we go:
 
-![](./Paper.Code.2.png) 
+![](./Paper.Code.2.png)
 
-1. We already have the main thread; it reads messages off "server A". 
+1. We already have the main thread; it reads messages off "server A".
 2. We already have a server thread; it accepts connections from clients.
 3. We need the server thread to create a new fan-out thread for each client, and that thread will write messages from server A back to the client.
 4. Now for problem 1: we need a global shared-memory data structure: a queue; each fan-out thread will have a separate queue and the main thread will put the new messages to the queues, waiting for the fan-out thread to process them.
-5. For problem 2:  when we start the fan-out thread, we can pass the socket information for each client to the fan-out thread, so it becomes local to that thread.
+5. For problem 2: when we start the fan-out thread, we can pass the socket information for each client to the fan-out thread, so it becomes local to that thread.
 
 This may sound a little bit abstract; how about looking at some actual code:
 
@@ -129,8 +134,8 @@ from threading import Thread, Lock
 
 # Using a simple counter to assign each client a unique id
 client_id = 0
-# clients are global shared-memory queue, it is a dictionary 
-# because each client has its own queue, so its keys are the 
+# clients are global shared-memory queue, it is a dictionary
+# because each client has its own queue, so its keys are the
 # client id, and the values are the queue for each client
 clients = {}
 
@@ -160,7 +165,7 @@ def run_server(socket: socket.socket):
         with client_lock:
             # Create a new queue for this client
             clients[client_id] = queue.Queue()
-						
+
             # Start the fanout thread for this client
             client_thread = Thread(target=fan_out_thread,
                                    args=(client_id, clientsocket))
@@ -177,10 +182,10 @@ def fan_out_thread(idx, socket):
             # Send it to the client
             socket.sendall(message)
         except InterruptedError:
-            # If this client has disconnected, remove this client from 
+            # If this client has disconnected, remove this client from
             # memory so we claim back some resources
             del clients[idx]
-            
+
 
 def read_1k_from_socket(socket):
     chunks = []
@@ -225,11 +230,11 @@ server("localhost", 1234, 1235)
 
 So this is what I come up with in 45 mins while designing on the fly and actively googling to learn how to use Python's TCP API. I am not satisfied though, there are a few directions I want to further explore:
 
-* How do we make this production-ready? There must be corner cases I have not thought about, exceptions I have not handled, and failure scenarios I have not faced before. How can I make this code more robust?
-* How to measure the performance of this server? What metrics should I use? 
-* How about async? Can I make use of `asyncio`? Will it perform better or worse?
-* The Amazing David Beazley has a [talk](https://www.youtube.com/watch?v=Y4Gt3Xjd7G8) about building your own async with raw Python API, can I use his idea to help me here?
-* I used shared-memory communication, but maybe we can try using `golang` to rewrite this and only rely on message-passing?
+- How do we make this production-ready? There must be corner cases I have not thought about, exceptions I have not handled, and failure scenarios I have not faced before. How can I make this code more robust?
+- How to measure the performance of this server? What metrics should I use?
+- How about async? Can I make use of `asyncio`? Will it perform better or worse?
+- The Amazing David Beazley has a [talk](https://www.youtube.com/watch?v=Y4Gt3Xjd7G8) about building your own async with raw Python API, can I use his idea to help me here?
+- I used shared-memory communication, but maybe we can try using `golang` to rewrite this and only rely on message-passing?
 
 All these questions are the reason why this post is called `etude 1`, I want to use this little task as a gateway to learning more about networking and system programming, to understand how to best write I/O code in different languages. So expect more like these to come!
 
