@@ -235,6 +235,7 @@ So this is what I come up with in 45 mins while designing on the fly and activel
 - How about async? Can I make use of `asyncio`? Will it perform better or worse?
 - The Amazing David Beazley has a [talk](https://www.youtube.com/watch?v=Y4Gt3Xjd7G8) about building your own async with raw Python API, can I use his idea to help me here?
 - I used shared-memory communication, but maybe we can try using `golang` to rewrite this and only rely on message-passing?
+- How about C++? how about it's new async/await support?
 
 All these questions are the reason why this post is called `etude 1`, I want to use this little task as a gateway to learning more about networking and system programming, to understand how to best write I/O code in different languages. So expect more like these to come!
 
