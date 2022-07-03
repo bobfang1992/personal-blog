@@ -10,7 +10,7 @@ I have _never_ worked with raw TCP socket API before. However, I know the concep
 
 The first step is understanding the task. We have a server. Let’s call it server A. The server will continuously send out fixed-length messages to any client. Your job is to write a program that reads from this server and broadcast the messages you got to any clients of your server.
 
-![Paper.Code.21](./Paper.Code.21.PNG)
+<img src="./Paper.Code.21.PNG" alt="Paper.Code.21" style="width: 100%;">
 
 Server A has been implemented for you; you don’t need to worry about the client's code either. The only thing that needs to be implemented here is the fanout server.
 
@@ -105,9 +105,9 @@ def run_server(socket: socket.socket):
 
 `accept` is the API to get a new connection from a remote client. It returns two things: a socket you can use to write back to the client and the client's address. I don't think we need the second return value, except for printing it to the log.
 
-Using the command-line tool [nc,](https://tldr.ostera.io/nc) we can connect to the server:
+Using the command-line tool [nc](https://tldr.ostera.io/nc), we can connect to the server:
 
-![](./fan-out-1.gif)
+<img src="./fan-out-1.gif" alt="" style="width: 100%;">
 
 Great! We know we reached a milestone where we can read messages off server A and accept client connections. The next step is to deliver the message to the clients. How do we do that? We have two problems to solve:
 
