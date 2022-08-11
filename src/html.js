@@ -14,6 +14,8 @@ export default function HTML(props) {
         />
         {props.headComponents}
         <script defer data-domain="csgrinding.xyz" src="https://plausible.io/js/plausible.js"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3584669266774682"
+          crossorigin="anonymous"></script>
       </head>
       <body {...props.bodyAttributes} className={defaultTheme}>
         <script
