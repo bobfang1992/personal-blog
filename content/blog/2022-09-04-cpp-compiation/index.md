@@ -104,7 +104,7 @@ I am quite curious to see if we go from these principles, could we derive more u
 
 # Bonus thoughts
 
-Look at these two techniques together, I am wondering if C++ has a fundamentally too simple solution to the “interface/implementation” problem. Other compiled language seems to all adopt modules (see 2 in Acknowledgement). Gladly C++ 20 introduced modules. Although it has not been widely adopted yet this might give us a chance to get away from using includes, which are simply text replacement. I will try find more about modules and make another post some time.
+Looking at these two techniques together, I am wondering if C++ has a fundamentally too simple solution to the “interface/implementation” problem. Other compiled language seems to all adopt modules (see 2 in Acknowledgement). Gladly C++ 20 introduced modules. Although it has not been widely adopted yet this might give us a chance to get away from using includes, which are simply text replacement. I will try find more about modules and make another post some time.
 
 # Acknowledgement
 
