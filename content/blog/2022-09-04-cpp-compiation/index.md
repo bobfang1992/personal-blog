@@ -91,7 +91,7 @@ struct widget::impl
 };
 ```
 
-But here is my theory on why this method can save on **rebuild** time. Since the header now is only the pure interface, any implementation change in the cpp file will not trigger an interface change (unless you actually changed the interface). So any implementation change will not trigger other classes to be recompiled.
+Here is my theory on why this method can save on **rebuild** time. Since the header now is only the pure interface, any implementation change in the cpp file will not trigger an interface change (unless you actually changed the interface). So any implementation change will not trigger other classes to be recompiled.
 
 # Common traits
 
