@@ -97,7 +97,7 @@ Here is my theory on why this method can save on **rebuild** time. Since the hea
 
 What can we learn from these two techniques, I think on the surface these two techniques seems almost unrelated but if we look at them in more depth they are just renderings of more general Software Engineering principles:
 
-1. keep your interface clean, well thought-of so that you do not need to change them often
+1. keep your interface clean, well thought-of so that you do not need to change them often. PIMPL and forward declaration are both techniques to achieve this goal.
 2. keep your dependencies minimal, if you do not need to know the full type of something, then a forward declaration is enough. Always favor tight dependencies over loose ones. (Think of the advice to not `from module_a import *` in Python).
 
 I am quite curious to see if we go from these principles, could we derive more useful techniques to make rebuild faster?
