@@ -111,7 +111,7 @@ Looking at these two techniques together, I am wondering if C++ has a fundamenta
 1. When trying to understand more about forward declaration I sought help on SO:
    1. [https://stackoverflow.com/questions/73586567/how-does-forward-declaration-save-compile-time](https://stackoverflow.com/questions/73586567/how-does-forward-declaration-save-compile-time)
 2. Modules in other languages
-   1. [https://go.dev/blog/using-go-modules](https://www.notion.so/Theory-about-C-compile-time-f2df4cd1dea043309f849299077a2170)
+   1. [https://go.dev/blog/using-go-modules](https://go.dev/blog/using-go-modules)
    2. [https://www.oracle.com/uk/corporate/features/understanding-java-9-modules.html](https://www.oracle.com/uk/corporate/features/understanding-java-9-modules.html)
    3. [https://doc.rust-lang.org/rust-by-example/mod.html](https://doc.rust-lang.org/rust-by-example/mod.html)
    4. [https://ocaml.org/docs/modules](https://ocaml.org/docs/modules)
