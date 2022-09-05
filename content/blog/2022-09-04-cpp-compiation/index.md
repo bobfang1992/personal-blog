@@ -63,6 +63,8 @@ class C {
 
 Let’s assume that C needs B’s full information so it has to include `B.h` . What happens if we made some change to class B? For example adding a method to it or adding some new data member? In this case the build system are forced to recompile C because B’s interface and potentially its layout changed. So if B has a direct import of A, then this “code change → recompile” trigger will be pushed every time we change `A.h` as well but if we forward declare A in B then it won’t. As it turns out in a project with hundreds of classes and files, breaking up some dependencies can actually save a lot of re-compilation.
 
+Another hidden benefit is that using forward declaration you keep the change to B's interface minimal. Even if A's interface changed, with forward declaration it does not mean B's interface will change as well. Sure B's implementation (.cpp) file will need to be recompiled but its interface (.h) file stays exactly the same.
+
 ![Untitled](./Untitled.png)
 
 # Pimpl
