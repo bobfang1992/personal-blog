@@ -1,5 +1,5 @@
 ---
-title: Theory about C++ compile time
+title: Notes about C++ compile time
 date: 2022-09-04T19:01:00Z
 description: Some thoughts on how to speed up C++ compilation
 ---
